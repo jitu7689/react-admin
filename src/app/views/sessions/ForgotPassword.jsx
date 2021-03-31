@@ -39,6 +39,7 @@ class ForgotPassword extends Component {
               </Grid>
               <Grid item lg={7} md={7} sm={7} xs={12}>
                 <div className="p-36 h-100 bg-light-gray position-relative">
+                  <h3 className="text-center pb-20">Forgot Password</h3>
                   <ValidatorForm ref="form" onSubmit={this.handleFormSubmit}>
                     <TextValidator
                       className="mb-24 w-100"
@@ -56,7 +57,7 @@ class ForgotPassword extends Component {
                     />
                     <div className="flex flex-middle">
                       <Button variant="contained" color="primary" type="submit">
-                        Reset Password
+                        Forgot Password
                       </Button>
                       <span className="ml-16 mr-8">or</span>
                       <Button

@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import {
   Card,
-  Checkbox,
-  FormControlLabel,
   Grid,
   Button,
   withStyles,
@@ -33,7 +31,6 @@ class SignIn extends Component {
   state = {
     email: "watson@example.com",
     password: "testpass",
-    agreement: ""
   };
   handleChange = event => {
     event.persist();
@@ -59,6 +56,7 @@ class SignIn extends Component {
               </Grid>
               <Grid item lg={7} md={7} sm={7} xs={12}>
                 <div className="p-36 h-100 bg-light-gray position-relative">
+                  <h3 className="text-center pb-20">Sign In</h3>
                   <ValidatorForm ref="form" onSubmit={this.handleFormSubmit}>
                     <TextValidator
                       className="mb-24 w-100"
@@ -85,13 +83,6 @@ class SignIn extends Component {
                       validators={["required"]}
                       errorMessages={["this field is required"]}
                     />
-                    <FormControlLabel
-                      className="mb-8"
-                      name="agreement"
-                      onChange={this.handleChange}
-                      control={<Checkbox checked />}
-                      label="I have read and agree to the terms of service."
-                    />
                     <div className="flex flex-middle mb-8">
                       <div className={classes.wrapper}>
                         <Button
@@ -100,7 +91,7 @@ class SignIn extends Component {
                           disabled={this.props.login.loading}
                           type="submit"
                         >
-                          Sign in to Enter Dashboard
+                          Sign in
                         </Button>
                         {this.props.login.loading && (
                           <CircularProgress

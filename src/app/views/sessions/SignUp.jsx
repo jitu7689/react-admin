@@ -1,20 +1,32 @@
 import React, { Component } from "react";
 import {
   Card,
-  Checkbox,
-  FormControlLabel,
   Grid,
   Button
 } from "@material-ui/core";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { connect } from "react-redux";
+import IDMaskedInput from "./components/IDMaskedInput";
+import ZipCodeNumbers from "./components/ZipCodeNumbers";
+import CountryStateCity from '../../countriesStatesCities.json';
+import MenuItem from '@material-ui/core/MenuItem';
 
 class SignUp extends Component {
   state = {
-    username: "",
-    email: "",
-    password: "",
-    agreement: ""
+    firstName: "",
+    lastName: "",
+    companyName: "",
+    addrOne: "",
+    addrTwo: "",
+    city: "",
+    state: "",
+    country: "",
+    zipcode: "",
+    phone: "",
+    adminEmail: "",
+    adminPassword: "",
+    stateList: [],
+    cityList: [],
   };
 
   handleChange = event => {
@@ -23,10 +35,37 @@ class SignUp extends Component {
       [event.target.name]: event.target.value
     });
   };
-
-  handleFormSubmit = event => {};
+  handleChangeCountry = event => {
+    event.persist();
+    let stateList = [];
+    for (let item of CountryStateCity) {
+      if (event.target.value === item.name) {
+        stateList = item.states
+      }
+    }
+    this.setState({
+      country: event.target.value,
+      stateList: stateList
+    });
+  };
+  handleChangeState = event => {
+    event.persist();
+    let cityList = [];
+    for (let item of this.state.stateList) {
+      if (event.target.value === item.name) {
+        cityList = item.cities
+      }
+    }
+    this.setState({
+      state: event.target.value,
+      cityList: cityList
+    });
+  };
+  handleFormSubmit = event => {
+    
+  };
   render() {
-    let { username, email, password } = this.state;
+    let { firstName, lastName, companyName, addrOne, addrTwo, city, state, country, zipcode, phone, adminEmail, adminPassword } = this.state;
     return (
       <div className="signup flex flex-center w-100 h-100vh">
         <div className="p-8">
@@ -42,50 +81,189 @@ class SignUp extends Component {
               </Grid>
               <Grid item lg={7} md={7} sm={7} xs={12}>
                 <div className="p-36 h-100">
+                  <h3 className="text-center pb-20">Register a company</h3>
                   <ValidatorForm ref="form" onSubmit={this.handleFormSubmit}>
-                    <TextValidator
-                      className="mb-24 w-100"
-                      variant="outlined"
-                      label="Username"
-                      onChange={this.handleChange}
-                      type="text"
-                      name="username"
-                      value={username}
-                      validators={["required"]}
-                      errorMessages={["this field is required"]}
-                    />
-                    <TextValidator
-                      className="mb-24 w-100"
-                      variant="outlined"
-                      label="Email"
-                      onChange={this.handleChange}
-                      type="email"
-                      name="email"
-                      value={email}
-                      validators={["required", "isEmail"]}
-                      errorMessages={[
-                        "this field is required",
-                        "email is not valid"
-                      ]}
-                    />
-                    <TextValidator
-                      className="mb-16 w-100"
-                      label="Password"
-                      variant="outlined"
-                      onChange={this.handleChange}
-                      name="password"
-                      type="password"
-                      value={password}
-                      validators={["required"]}
-                      errorMessages={["this field is required"]}
-                    />
-                    <FormControlLabel
-                      className="mb-16"
-                      name="agreement"
-                      onChange={this.handleChange}
-                      control={<Checkbox />}
-                      label="I have read and agree to the terms of service."
-                    />
+                  <Grid container spacing={3}>
+                    <Grid item xs={6}>
+                      <TextValidator
+                        className="mb-24 w-100"
+                        variant="outlined"
+                        label="First name"
+                        onChange={this.handleChange}
+                        type="text"
+                        name="firstName"
+                        value={firstName}
+                        validators={["required"]}
+                        errorMessages={["this field is required"]}
+                      />
+                    </Grid>
+                    <Grid item xs={6}>
+                      <TextValidator
+                        className="mb-24 w-100"
+                        variant="outlined"
+                        label="Last name"
+                        onChange={this.handleChange}
+                        type="text"
+                        name="lastName"
+                        value={lastName}
+                        validators={["required"]}
+                        errorMessages={["this field is required"]}
+                      />
+                    </Grid>
+                    <Grid item xs={6}>
+                      <TextValidator
+                        className="mb-24 w-100"
+                        variant="outlined"
+                        label="Company name"
+                        onChange={this.handleChange}
+                        type="text"
+                        name="companyName"
+                        value={companyName}
+                        validators={["required"]}
+                        errorMessages={["this field is required"]}
+                      />
+                    </Grid>
+                    <Grid item xs={6}>
+                      <TextValidator
+                        className="mb-24 w-100"
+                        variant="outlined"
+                        label="Address 1"
+                        onChange={this.handleChange}
+                        type="text"
+                        name="addrOne"
+                        value={addrOne}
+                        validators={["required"]}
+                        errorMessages={["this field is required"]}
+                      />
+                    </Grid>
+                    <Grid item xs={6}>
+                      <TextValidator
+                        className="mb-24 w-100"
+                        variant="outlined"
+                        label="Address 2"
+                        onChange={this.handleChange}
+                        type="text"
+                        name="addrTwo"
+                        value={addrTwo}
+                        validators={["required"]}
+                        errorMessages={["this field is required"]}
+                      />
+                    </Grid>
+                    <Grid item xs={6}>
+                      <TextValidator
+                        className="mb-24 w-100"
+                        variant="outlined"
+                        label="Country"
+                        onChange={this.handleChangeCountry}
+                        select
+                        name="country"
+                        value={country}
+                        validators={["required"]}
+                        errorMessages={["this field is required"]}
+                      >
+                        {
+                          CountryStateCity.map((op, i) => <MenuItem key={i} value={op.name}>{op.name}</MenuItem>)
+                        }
+                      </TextValidator>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <TextValidator
+                        className="mb-24 w-100"
+                        variant="outlined"
+                        label="State"
+                        onChange={this.handleChangeState}
+                        select
+                        name="state"
+                        value={state}
+                        validators={["required"]}
+                        errorMessages={["this field is required"]}
+                      >
+                        {
+                          this.state.stateList.map((op, i) => <MenuItem key={i} value={op.name}>{op.name}</MenuItem>)
+                        }
+                      </TextValidator>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <TextValidator
+                        className="mb-24 w-100"
+                        variant="outlined"
+                        label="City"
+                        onChange={this.handleChange}
+                        select
+                        name="city"
+                        value={city}
+                        validators={["required"]}
+                        errorMessages={["this field is required"]}
+                      >
+                        {
+                          this.state.cityList.map((op, i) => <MenuItem key={i} value={op.name}>{op.name}</MenuItem>)
+                        }
+                      </TextValidator>
+                    </Grid>
+                    
+                    <Grid item xs={6}>
+                      <TextValidator
+                        className="mb-24 w-100"
+                        variant="outlined"
+                        label="Zipcode"
+                        name="zipcode"
+                        value={zipcode}
+                        InputProps={{
+                          inputComponent: ZipCodeNumbers,
+                          inputProps: {
+                            onIDChange: this.handleChange
+                          }
+                        }}
+                        validators={["required"]}
+                        errorMessages={["this field is required"]}
+                      />
+                    </Grid>
+                    <Grid item xs={6}>
+                      <TextValidator
+                        className="mb-24 w-100"
+                        variant="outlined"
+                        label="Phone number"
+                        name="phone"
+                        value={phone}
+                        InputProps={{
+                          inputComponent: IDMaskedInput,
+                          inputProps: {
+                            onIDChange: this.handleChange
+                          }
+                        }}
+                        validators={["required"]}
+                        errorMessages={["this field is required"]}
+                      />
+                    </Grid>
+                    <Grid item xs={6}>
+                      <TextValidator
+                        className="mb-24 w-100"
+                        variant="outlined"
+                        label="Email"
+                        onChange={this.handleChange}
+                        type="email"
+                        name="adminEmail"
+                        value={adminEmail}
+                        validators={["required", "isEmail"]}
+                        errorMessages={[
+                          "this field is required",
+                          "email is not valid"
+                        ]}
+                      />
+                    </Grid>
+                    <Grid item xs={6}>
+                      <TextValidator
+                        className="mb-16 w-100"
+                        label="Password"
+                        variant="outlined"
+                        onChange={this.handleChange}
+                        name="adminPassword"
+                        type="password"
+                        value={adminPassword}
+                        validators={["required"]}
+                        errorMessages={["this field is required"]}
+                      />
+                    </Grid>
                     <div className="flex flex-middle">
                       <Button
                         className="capitalize"
@@ -105,6 +283,7 @@ class SignUp extends Component {
                         Sign in
                       </Button>
                     </div>
+                    </Grid>
                   </ValidatorForm>
                 </div>
               </Grid>
