@@ -10,7 +10,10 @@ class ZipCodeNumbers extends React.Component {
           {...other}
           thousandSeparator={false}
           value={this.props.value}
-          onChange={event => this.props.onIDChange(event)}
+          onChange={event => {
+            console.log(event.target.value)
+            this.props.onZipChange(event)
+          }}
         />
       </div>
     );

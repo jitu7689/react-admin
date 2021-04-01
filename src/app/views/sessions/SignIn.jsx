@@ -107,7 +107,7 @@ class SignIn extends Component {
                           this.props.history.push("/session/signup")
                         }
                       >
-                        Sign up
+                        Register new company
                       </Button>
                     </div>
                     <Button

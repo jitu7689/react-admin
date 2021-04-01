@@ -1,12 +1,14 @@
 .signup {
   background: #1A2038;
-  height: 100%;
 
   .signup-card {
-    max-width: 800px;
+    max-width: 1000px;
     border-radius: 12px !important;
     img {
       width: 200px;
     }
+  }
+  @media screen and (min-width: 1000px) {
+    height: 100%;
   }
 }
