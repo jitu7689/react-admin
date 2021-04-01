@@ -11,7 +11,7 @@ class IDMaskedInput extends React.Component {
           format="+1 (###) ###-####"
           mask="_"
           value={this.props.value}
-          onChange={event => this.props.onPhoneChange(event)}
+          onChange={event => this.props.onChange(event)}
         />
       </div>
     );

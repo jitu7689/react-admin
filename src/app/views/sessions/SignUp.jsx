@@ -171,8 +171,6 @@ class SignUp extends Component {
                           select
                           name="city"
                           value={city}
-                          validators={["required"]}
-                          errorMessages={["this field is required"]}
                         >
                           {
                             this.state.cityList.map((op, i) => <MenuItem key={i} value={op.name}>{op.name}</MenuItem>)
@@ -190,7 +188,7 @@ class SignUp extends Component {
                           InputProps={{
                             inputComponent: ZipCodeNumbers,
                             inputProps: {
-                              onZipChange: this.handleChange
+                              onChange: this.handleChange
                             }
                           }}
                           validators={["required"]}
@@ -207,7 +205,7 @@ class SignUp extends Component {
                           InputProps={{
                             inputComponent: IDMaskedInput,
                             inputProps: {
-                              onPhoneChange: this.handleChange
+                              onChange: this.handleChange
                             }
                           }}
                           validators={["required"]}
