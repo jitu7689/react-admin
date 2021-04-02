@@ -15,7 +15,7 @@ class CreateClient extends Component {
         super(props);
 
         this.state = {
-            qName: "",
+            iName: "",
             terms: "",
             notes: "",
             discountPercentage: "",
@@ -36,7 +36,7 @@ class CreateClient extends Component {
         console.log(this.state)
     };
     render() {
-        const { qName, terms, notes, discountPercentage, price, quantity, unit, currency, draft } = this.state;
+        const { iName, terms, notes, discountPercentage, price, quantity, unit, currency, draft } = this.state;
 
         return (
             <Fragment>
@@ -45,26 +45,26 @@ class CreateClient extends Component {
                     <div className="mb-sm-30">
                         <Breadcrumb
                             routeSegments={[
-                                { name: "Clients", path: "/dashboard/home" },
-                                { name: "Create Client" }
+                                { name: "Invoices", path: "/invoices" },
+                                { name: "Create Invoice" }
                             ]}
                         />
                     </div>
                     <Grid container spacing={3}>
                         <Grid item lg={12} md={12} sm={12} xs={12}>
                             <div className="p-36 h-100">
-                                <h3 className="text-center pb-20">Create new client</h3>
+                                <h3 className="text-center pb-20">Create new invoice</h3>
                                 <ValidatorForm ref="form" onSubmit={this.handleFormSubmit}>
                                 <Grid container spacing={3}>
                                         <Grid item xs={6}>
                                             <TextValidator
                                                 className="mb-24 w-100"
                                                 variant="outlined"
-                                                label="Quotation name"
+                                                label="Invoice name"
                                                 onChange={this.handleChange}
                                                 type="text"
-                                                name="qName"
-                                                value={qName}
+                                                name="iName"
+                                                value={iName}
                                                 validators={["required"]}
                                                 errorMessages={["this field is required"]}
                                             />

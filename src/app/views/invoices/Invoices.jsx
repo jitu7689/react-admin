@@ -54,7 +54,7 @@ class Invoices extends Component {
             />
           </div>
           <div className="text-align-right mb-20">
-            <Button variant="contained" color="primary">Create new invoice</Button>
+            <Button variant="contained" color="primary" onClick={() => this.props.history.push("/create-invoice")}>Create new invoice</Button>
           </div>
           <Grid container spacing={3}>
             <Grid item lg={12} md={12} sm={12} xs={12}>
