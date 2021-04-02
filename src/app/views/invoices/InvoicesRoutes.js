@@ -1,7 +1,7 @@
-import { MatxLoadable } from "matx";
+import { ReactLoadable } from "matx";
 import { authRoles } from "../../auth/authRoles";
 
-const Invoices = MatxLoadable({
+const Invoices = ReactLoadable({
   loader: () => import("./Invoices")
 })
 

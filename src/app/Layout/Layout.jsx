@@ -28,13 +28,6 @@ class Layout extends Component {
     }
   }
 
-  componentWillMount() {
-    if (window) {
-      // LISTEN WINDOW RESIZE
-      window.addEventListener("resize", this.listenWindowResize);
-    }
-  }
-
   componentWillUnmount() {
     if (window) {
       window.removeEventListener("resize", this.listenWindowResize);

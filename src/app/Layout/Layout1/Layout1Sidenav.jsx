@@ -45,19 +45,13 @@ class Layout1Sidenav extends Component {
     // hidden: true
   };
 
-  componentWillMount() {
-
-    // CLOSE SIDENAV ON ROUTE CHANGE ON MOBILE
+  componentWillUnmount() {
+    // this.unlistenRouteChange();
     this.unlistenRouteChange = this.props.history.listen((location, action) => {
       if (isMdScreen()) {
         this.updateSidebarMode({ mode: "close" });
       }
     });
-
-  }
-
-  componentWillUnmount() {
-    this.unlistenRouteChange();
   }
 
   updateSidebarMode = sidebarSettings => {

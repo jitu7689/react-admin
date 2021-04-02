@@ -1,10 +1,10 @@
-import { MatxLoadable } from "matx";
+import { ReactLoadable } from "matx";
 import { authRoles } from "../../auth/authRoles";
 
-const Analytics = MatxLoadable({
+const Analytics = ReactLoadable({
   loader: () => import("./Analytics")
 })
-const CreateClient = MatxLoadable({
+const CreateClient = ReactLoadable({
   loader: () => import("./CreateClient")
 })
 

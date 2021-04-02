@@ -1,6 +1,6 @@
-import {MatxLoadable} from "matx";
+import {ReactLoadable} from "matx";
 
-const Layout1 = MatxLoadable({
+const Layout1 = ReactLoadable({
   loader: () => import("./Layout1/Layout1")
 });
 

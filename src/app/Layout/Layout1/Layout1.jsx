@@ -21,13 +21,11 @@ const styles = theme => {
 };
 
 class Layout1 extends Component {
-  componentWillMount() {
+
+  componentWillUnmount() {
     if (isMdScreen()) {
       this.updateSidebarMode({ mode: "close" });
     }
-  }
-
-  componentWillUnmount() {
   }
 
   updateSidebarMode = sidebarSettings => {

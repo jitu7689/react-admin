@@ -1,62 +1,71 @@
 import React, { Component, Fragment } from "react";
 import {
   Grid,
-  Card
+  Button
 } from "@material-ui/core";
-
-import DoughnutChart from "../charts/echarts/Doughnut";
-
-import StatCards from "./shared/StatCards";
-// import TableCard from "./shared/TableCard";
-// import RowCards from "./shared/RowCards";
-// import StatCards2 from "./shared/StatCards2";
-// import UpgradeCard from "./shared/UpgradeCard";
-// import Campaigns from "./shared/Campaigns";
 import { withStyles } from "@material-ui/styles";
+import { Breadcrumb } from "matx";
+import GridTable from '@nadavshaar/react-grid-table';
+let dummyData = [{
+  "name": "Quotation name",
+  "terms": "terms",
+  "notes": "notes",
+  "discount_percentage": "10",
+  "price": "200",
+  "quantity": "10",
+  "unit": "5",
+  "currency": "$",
+  "draft": "true"
 
+}]
 class Quotations extends Component {
-  state = {};
-
+  constructor(props) {
+    super(props);
+    var columns = [
+      { id: 1, field: 'name', label: 'Name', visible: true, sortable: true },
+      { id: 2, field: 'terms', label: 'Terms', visible: true, sortable: true },
+      { id: 3, field: 'notes', label: 'Notes', visible: true, sortable: true },
+      { id: 4, field: 'discount_percentage', label: 'Discount Percentage', visible: true, sortable: true },
+      { id: 5, field: 'price', label: 'Price', visible: true, sortable: true },
+      { id: 5, field: 'quantity', label: 'Quantity', visible: true, sortable: true },
+      { id: 5, field: 'unit', label: 'Unit', visible: true, sortable: true },
+      { id: 5, field: 'currency', label: 'Currency', visible: true, sortable: true },
+      { id: 5, field: 'draft', label: 'Draft', visible: true, sortable: true }
+      
+    ];
+    this.state = {
+      cols: columns
+    };
+  }
+  
   render() {
-    let { theme } = this.props;
 
     return (
       <Fragment>
 
         <div className="analytics m-sm-30">
+          <div className="mb-sm-30">
+            <Breadcrumb
+              routeSegments={[
+                { name: "Quotations", path: "/quotations" },
+                { name: "Quotations" }
+              ]}
+            />
+          </div>
+          <div className="text-align-right mb-20">
+            <Button variant="contained" color="primary" onClick={() => this.props.history.push("/create-quotation")}>Create new Quotation</Button>
+          </div>
           <Grid container spacing={3}>
-            <Grid item lg={8} md={8} sm={12} xs={12}>
-
-              <StatCards theme={theme}/>
-
-              {/* Top Selling Products */}
-              {/* <TableCard/> */}
-
-              {/* <StatCards2/> */}
-
-              {/* <h4 className="card-title text-muted mb-16">Ongoing Projects</h4> */}
-              {/* <RowCards /> */}
-
-            </Grid>
-
-            <Grid item lg={4} md={4} sm={12} xs={12}>
-              <Card className="px-24 py-16 mb-16">
-                <div className="card-title">Traffic Sources</div>
-                <div className="card-subtitle">Last 30 days</div>
-                <DoughnutChart
-                  height="300px"
-                  color={[
-                    theme.palette.primary.dark,
-                    theme.palette.primary.main,
-                    theme.palette.primary.light
-                  ]}
-                />
-              </Card>
-
-              {/* <UpgradeCard/>
-
-              <Campaigns/> */}
-
+            <Grid item lg={12} md={12} sm={12} xs={12}>
+              <GridTable
+                columns={this.state.cols}
+                rows={dummyData}
+                isPaginated={true}
+                isVirtualScroll={true}
+                showSearch={true}
+                showRowsInformation={false}
+                isHeaderSticky={true}
+              />
             </Grid>
           </Grid>
         </div>

@@ -19,7 +19,7 @@ class AuthGuard extends Component {
       this.redirectRoute(this.props);
     }
   }
-
+  
   componentDidUpdate() {
     if (!this.state.authenticated) {
       this.redirectRoute(this.props);

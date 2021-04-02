@@ -2,8 +2,8 @@ export { default as Breadcrumb } from "./components/Breadcrumb";
 export { default as MatxMenu } from "./components/MatxMenu";
 export { default as MatxToolbarMenu } from "./components/MatxToolbarMenu";
 export {
-  default as MatxLoadable
-} from "./components/MatxLoadable/MatxLoadable";
+  default as ReactLoadable
+} from "./components/ReactLoadable/ReactLoadable";
 export { default as MatxSearchBox } from "./components/MatxSearchBox";
 export {
   default as MatxVerticalNav
