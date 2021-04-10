@@ -21,7 +21,7 @@ import { MatxMenu } from "matx";
 import Sidenav from "../SharedCompoents/Sidenav";
 import Brand from "../SharedCompoents/Brand";
 import SidenavTheme from "../MatxTheme/SidenavTheme";
-import { isMdScreen } from "utils";
+import { isMdScreen, logout } from "utils";
 
 const styles = theme => ({});
 
@@ -78,7 +78,7 @@ class Layout1Sidenav extends Component {
   };
 
   handleSignOut = () => {
-    this.props.logoutUser();
+    logout();
   };
 
   renderLogoSwitch = () => (
@@ -94,7 +94,8 @@ class Layout1Sidenav extends Component {
   );
 
   renderUser = () => {
-    let { user } = this.props;
+    // let { user } = this.props;
+    let user = JSON.parse(localStorage.getItem('auth_user'));
     return (
       <div className="sidenav__user">
         <div className="username-photo">

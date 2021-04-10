@@ -5,11 +5,9 @@ import { setLayoutSettings } from "app/redux/actions/LayoutActions";
 import { withStyles } from "@material-ui/core";
 import Scrollbar from "react-perfect-scrollbar";
 import { isMdScreen, classList } from "utils";
-import { renderRoutes } from "react-router-config";
 import Layout1Topbar from "./Layout1Topbar";
 import Layout1Sidenav from "./Layout1Sidenav";
-import Footer from "../SharedCompoents/Footer";
-import AppContext from "app/appContext";
+// import AppContext from "app/appContext";
 
 
 const styles = theme => {
@@ -43,7 +41,7 @@ class Layout1 extends Component {
   };
 
   render() {
-    let { settings, classes, theme } = this.props;
+    let { settings, classes, theme, children } = this.props;
 
     let { layout1Settings } = settings;
     let layoutClasses = {
@@ -52,8 +50,8 @@ class Layout1 extends Component {
       "topbar-fixed": layout1Settings.topbar.fixed
     };
     return (
-      <AppContext.Consumer>
-        {({ routes }) => (
+      <div style={{height: '100%'}}>
+        {/* {({ routes }) => ( */}
           <div className={classList(layoutClasses)}>
             {layout1Settings.leftSidebar.show && <Layout1Sidenav />}
 
@@ -66,9 +64,8 @@ class Layout1 extends Component {
                 <Scrollbar className="scrollable-content">
                   {layout1Settings.topbar.show &&
                     !layout1Settings.topbar.fixed && <Layout1Topbar style={{height: '80px'}} />}
-                  <div className="content">{renderRoutes(routes)}</div>
+                  <div className="content">{children}</div>
                   <div className="my-auto" />
-                  {settings.footer.show && !settings.footer.fixed && <Footer />}
                 </Scrollbar>
               )}
 
@@ -76,17 +73,14 @@ class Layout1 extends Component {
                 <div className="scrollable-content">
                   {layout1Settings.topbar.show &&
                     !layout1Settings.topbar.fixed && <Layout1Topbar />}
-                  <div className="content">{renderRoutes(routes)}</div>
+                  <div className="content">{children}</div>
                   <div className="my-auto" />
-                  {settings.footer.show && !settings.footer.fixed && <Footer />}
                 </div>
               )}
-
-              {settings.footer.show && settings.footer.fixed && <Footer />}
             </div>
           </div>
-        )}
-      </AppContext.Consumer>
+        {/* )} */}
+      </div>
     );
   }
 }

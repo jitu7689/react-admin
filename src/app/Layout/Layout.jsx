@@ -80,10 +80,10 @@ class Layout extends Component {
   }
 
   render() {
-    const { settings } = this.props;
-    const Layout = Layouts[settings.activeLayout];
+    // const { settings } = this.props;
+    // const Layout = Layouts[settings.activeLayout];
 
-    return <Layout {...this.props} />;
+    return <Layouts />;
   }
 }
 

@@ -39,7 +39,22 @@ class SignIn extends Component {
     });
   };
   handleFormSubmit = event => {
-    this.props.loginWithEmailAndPassword({ ...this.state });
+    // this.props.loginWithEmailAndPassword({ ...this.state });
+    let user = {
+      userId: "1",
+      role: 'ADMIN',
+      displayName: "Jason Alexander",
+      email: "jasonalexander@gmail.com",
+      photoURL: "/assets/images/face-6.jpg",
+      age: 25,
+      token: "faslkhfh423oiu4h4kj432rkj23h432u49ufjaklj423h4jkhkjh"
+    }
+    localStorage.setItem('auth_user', JSON.stringify(user))
+    localStorage.setItem('token', user.token);
+    setTimeout(() => {
+      window.location.href = '/';
+      // this.props.history.push("/dashboard");
+    },500)
   };
   render() {
     let { email, password } = this.state;
@@ -104,7 +119,7 @@ class SignIn extends Component {
                       <Button
                         className="capitalize"
                         onClick={() =>
-                          this.props.history.push("/session/signup")
+                          this.props.history.push("/signup")
                         }
                       >
                         Register new company
@@ -113,7 +128,7 @@ class SignIn extends Component {
                     <Button
                       className="text-primary"
                       onClick={() =>
-                        this.props.history.push("/session/forgot-password")
+                        this.props.history.push("/forgot-password")
                       }
                     >
                       Forgot password?

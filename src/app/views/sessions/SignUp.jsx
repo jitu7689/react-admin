@@ -10,7 +10,7 @@ import IDMaskedInput from "./components/IDMaskedInput";
 import ZipCodeNumbers from "./components/ZipCodeNumbers";
 import CountryStateCity from '../../countriesStatesCities.json';
 import MenuItem from '@material-ui/core/MenuItem';
-
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -77,6 +77,17 @@ class SignUp extends Component {
             <Grid container>
               <Grid item lg={5} md={5} sm={5} xs={12}>
                 <div className="p-32 flex flex-center bg-light-gray flex-middle h-100">
+                  <div className="back-to-signin">
+                  <Button
+                    className="capitalize"
+                    color="primary"
+                    onClick={() =>
+                      this.props.history.push("/")
+                    }
+                  >
+                    <ArrowBackIosIcon /> Back to Sign in
+                        </Button>
+                  </div>
                   <img
                     src="/assets/images/illustrations/posting_photo.svg"
                     alt=""
@@ -270,25 +281,18 @@ class SignUp extends Component {
                           errorMessages={["this field is required"]}
                         />
                       </Grid>
-                      <div className="flex flex-middle">
-                        <Button
-                          className="capitalize"
-                          variant="contained"
-                          color="primary"
-                          type="submit"
-                        >
-                          Register now
-                        </Button>
-                        <span className="ml-16 mr-8">or</span>
-                        <Button
-                          className="capitalize"
-                          onClick={() =>
-                            this.props.history.push("/session/signin")
-                          }
-                        >
-                          Back to Sign in
-                        </Button>
-                      </div>
+                      <Grid item xs={12}>
+                        <div className="text-center">
+                          <Button
+                            className="capitalize"
+                            variant="contained"
+                            color="primary"
+                            type="submit"
+                          >
+                            Register now
+                          </Button>
+                        </div>
+                      </Grid>]
                     </Grid>
                   </ValidatorForm>
                 </div>

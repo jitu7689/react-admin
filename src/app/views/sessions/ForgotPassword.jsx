@@ -10,6 +10,7 @@ import { PropTypes } from "prop-types";
 import { withRouter } from "react-router-dom";
 
 import { resetPassword } from "../../redux/actions/LoginActions";
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 class ForgotPassword extends Component {
   state = {
@@ -34,6 +35,17 @@ class ForgotPassword extends Component {
             <Grid container>
               <Grid item lg={5} md={5} sm={5} xs={12}>
                 <div className="p-32 flex flex-center flex-middle h-100">
+                  <div className="back-to-signin">
+                    <Button
+                      className="capitalize"
+                      color="primary"
+                      onClick={() =>
+                        this.props.history.push("/")
+                      }
+                    >
+                      <ArrowBackIosIcon /> Back to Sign in
+                        </Button>
+                  </div>
                   <img src="/assets/images/illustrations/dreamer.svg" alt="" />
                 </div>
               </Grid>
@@ -55,18 +67,9 @@ class ForgotPassword extends Component {
                         "email is not valid"
                       ]}
                     />
-                    <div className="flex flex-middle">
+                    <div className="text-center">
                       <Button variant="contained" color="primary" type="submit">
                         Forgot Password
-                      </Button>
-                      <span className="ml-16 mr-8">or</span>
-                      <Button
-                        className="capitalize"
-                        onClick={() =>
-                          this.props.history.push("/session/signin")
-                        }
-                      >
-                        Sign in
                       </Button>
                     </div>
                   </ValidatorForm>

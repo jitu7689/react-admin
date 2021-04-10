@@ -142,3 +142,7 @@ export function classList(classes) {
     .map(entry => entry[0])
     .join(" ");
 }
+export const logout = () =>{
+  localStorage.clear();
+  window.location.href = '/';
+}

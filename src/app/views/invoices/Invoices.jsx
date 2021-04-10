@@ -6,6 +6,7 @@ import {
 import { withStyles } from "@material-ui/styles";
 import { Breadcrumb } from "matx";
 import GridTable from '@nadavshaar/react-grid-table';
+import Layout from "../../Layout/Layout1/Layout1";
 let dummyData = [{
   "name": "Quotation name",
   "terms": "terms",
@@ -39,38 +40,40 @@ class Invoices extends Component {
   }
 
   render() {
-    let { theme } = this.props;
+    // let { theme } = this.props;
 
     return (
-      <Fragment>
+      <Layout>
+        <Fragment>
 
-        <div className="analytics m-sm-30">
-          <div className="mb-sm-30">
-            <Breadcrumb
-              routeSegments={[
-                { name: "Invoices", path: "/invoices" },
-                { name: "Invoices" }
-              ]}
-            />
-          </div>
-          <div className="text-align-right mb-20">
-            <Button variant="contained" color="primary" onClick={() => this.props.history.push("/create-invoice")}>Create new invoice</Button>
-          </div>
-          <Grid container spacing={3}>
-            <Grid item lg={12} md={12} sm={12} xs={12}>
-              <GridTable
-                columns={this.state.cols}
-                rows={dummyData}
-                isPaginated={true}
-                isVirtualScroll={true}
-                showSearch={true}
-                showRowsInformation={false}
-                isHeaderSticky={true}
+          <div className="analytics m-sm-30">
+            <div className="mb-sm-30">
+              <Breadcrumb
+                routeSegments={[
+                  { name: "Invoices", path: "/invoices" },
+                  { name: "Invoices" }
+                ]}
               />
+            </div>
+            <div className="text-align-right mb-20">
+              <Button variant="contained" color="primary" onClick={() => this.props.history.push("/create-invoice")}>Create new invoice</Button>
+            </div>
+            <Grid container spacing={3}>
+              <Grid item lg={12} md={12} sm={12} xs={12}>
+                <GridTable
+                  columns={this.state.cols}
+                  rows={dummyData}
+                  isPaginated={true}
+                  isVirtualScroll={true}
+                  showSearch={true}
+                  showRowsInformation={false}
+                  isHeaderSticky={true}
+                />
+              </Grid>
             </Grid>
-          </Grid>
-        </div>
-      </Fragment>
+          </div>
+        </Fragment>
+      </Layout>
     );
   }
 }

@@ -1,7 +1,7 @@
 export const navigations = [
   {
     name: "Clients",
-    path: "/dashboard/home",
+    path: "/dashboard",
     icon: "people_alt"
   },
   {

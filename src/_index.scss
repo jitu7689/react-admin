@@ -17,3 +17,17 @@ code {
   font-size: 16px;
   // color: rgba(255, 162, 0, 0.842);
 }
+.custom-number-input {
+  padding: 17px 14px;
+  background: transparent;
+  border-color: rgba(0, 0, 0, 0.23);
+  border-radius: 4px;
+  width: calc(100% - 32px);
+}
+.custom-number-input:focus {
+  border-color: #7467ef;
+  outline: 0px;
+}
+.MuiTableCell-root, .MuiTableCell-head {
+  padding: 8px !important;
+}

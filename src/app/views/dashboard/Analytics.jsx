@@ -5,7 +5,7 @@ import {
 } from "@material-ui/core";
 import StatCards from "./shared/StatCards";
 import { withStyles } from "@material-ui/styles";
-
+import Layout from "../../Layout/Layout1/Layout1";
 class Dashboard1 extends Component {
   state = {};
 
@@ -13,19 +13,21 @@ class Dashboard1 extends Component {
     let { theme } = this.props;
 
     return (
-      <Fragment>
+      <Layout>
+        <Fragment>
 
-        <div className="analytics m-sm-30">
-          <Grid container spacing={3}>
-            <Grid item lg={12} md={12} sm={12} xs={12}>
+          <div className="analytics m-sm-30">
+            <Grid container spacing={3}>
+              <Grid item lg={12} md={12} sm={12} xs={12}>
 
-              <StatCards theme={theme}/>
-              <Button variant="contained" color="primary" onClick={() => this.props.history.push("/create-client")}> Create New Client </Button>
+                <StatCards theme={theme}/>
+                <Button variant="contained" color="primary" onClick={() => this.props.history.push("/create-client")}> Create New Client </Button>
+              </Grid>
+
             </Grid>
-
-          </Grid>
-        </div>
-      </Fragment>
+          </div>
+        </Fragment>
+      </Layout>
     );
   }
 }

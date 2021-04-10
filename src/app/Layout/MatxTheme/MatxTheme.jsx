@@ -8,13 +8,7 @@ import { setLayoutSettings } from "app/redux/actions/LayoutActions";
 import { Helmet } from "react-helmet";
 
 class MatxTheme extends Component {
-  // componentWillReceiveProps() {
-  //   // cssVars();
-  // }
-
-  UNSAFE_componentWillUpdate() {
-    // cssVars();
-  }
+  
   render() {
     let { children, settings } = this.props;
     let activeTheme = { ...settings.themes[settings.activeTheme] };
