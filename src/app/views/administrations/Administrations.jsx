@@ -1,25 +1,62 @@
 import React, { Component, Fragment } from "react";
 import {
   Grid,
-  Card
+  Button
 } from "@material-ui/core";
-
-import DoughnutChart from "../charts/echarts/Doughnut";
-
-import StatCards from "./shared/StatCards";
-// import TableCard from "./shared/TableCard";
-// import RowCards from "./shared/RowCards";
-// import StatCards2 from "./shared/StatCards2";
-// import UpgradeCard from "./shared/UpgradeCard";
-// import Campaigns from "./shared/Campaigns";
 import { withStyles } from "@material-ui/styles";
 import Layout from "../../Layout/Layout1/Layout1";
+import GridTable from '@nadavshaar/react-grid-table';
+import Tooltip from '@material-ui/core/Tooltip';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+import AddIcon from '@material-ui/icons/Add';
+let dummyData = [{
+  "first_name": "first name",
+  "last_name": "last name",
+  "email": "email@gmail.com",
+  "create_quote": 'Yes',
+  "create_invoice": 'Yes',
+  "tenant_name": "Xyz"
 
+}]
 class Administrations extends Component {
-  state = {};
-
+  constructor(props) {
+    super(props);
+    var columns = [
+      { id: 1, field: 'first_name', label: 'First Name', visible: true, sortable: true },
+      { id: 2, field: 'last_name', label: 'Last Name', visible: true, sortable: true },
+      { id: 3, field: 'email', label: 'Email', visible: true, sortable: true },
+      { id: 4, field: 'create_quote', label: 'Create Quote', visible: true, sortable: true },
+      { id: 5, field: 'create_invoice', label: 'Create Invoice', visible: true, sortable: true },
+      { id: 5, field: 'tenant_name', label: 'Tenant Name', visible: true, sortable: true },
+      { id: 6, field: 'status', label: 'Status', visible: true, sortable: false, cellRenderer: this.statusTemp },
+      { id: 7, field: 'action', label: 'Action', visible: true, sortable: false, cellRenderer: this.actionBtn }
+      
+    ];
+    this.state = {
+      cols: columns
+    };
+  }
+  
+	statusTemp = ({ tableManager, value, field, data, column, colIndex, rowIndex }) => {
+		return (<div className="rgt-cell-inner">
+			<Tooltip title="Admins">
+				<Button variant="contained" color="primary" style={{ margin: '5px' }} >Approved</Button>
+			</Tooltip>
+		</div>);
+	}
+  
+	actionBtn = ({ tableManager, value, field, data, column, colIndex, rowIndex }) => {
+		return (<div className="rgt-cell-inner">
+				<Tooltip title="Edit">
+					<Button style={{ width: 'auto', margin: 3 }} variant="outlined" size="medium" color="primary"><EditIcon /></Button>
+				</Tooltip>
+				<Tooltip title="Delete">
+					<Button style={{ width: 'auto', margin: 3 }} variant="outlined" size="medium" color="secondary" ><DeleteIcon /></Button>
+				</Tooltip>
+		</div>);
+	}
   render() {
-    let { theme } = this.props;
 
     return (
       <Layout>
@@ -27,38 +64,22 @@ class Administrations extends Component {
 
           <div className="analytics m-sm-30">
             <Grid container spacing={3}>
-              <Grid item lg={8} md={8} sm={12} xs={12}>
+              <Grid item lg={12} md={12} sm={12} xs={12}>
 
-                <StatCards theme={theme}/>
-
-                {/* Top Selling Products */}
-                {/* <TableCard/> */}
-
-                {/* <StatCards2/> */}
-
-                {/* <h4 className="card-title text-muted mb-16">Ongoing Projects</h4> */}
-                {/* <RowCards /> */}
-
+                <div align="right">
+                <Button variant="contained" color="primary" onClick={() => this.props.history.push("/create-client")}><AddIcon /> Add User </Button>
+                </div>
               </Grid>
-
-              <Grid item lg={4} md={4} sm={12} xs={12}>
-                <Card className="px-24 py-16 mb-16">
-                  <div className="card-title">Traffic Sources</div>
-                  <div className="card-subtitle">Last 30 days</div>
-                  <DoughnutChart
-                    height="300px"
-                    color={[
-                      theme.palette.primary.dark,
-                      theme.palette.primary.main,
-                      theme.palette.primary.light
-                    ]}
-                  />
-                </Card>
-
-                {/* <UpgradeCard/>
-
-                <Campaigns/> */}
-
+              <Grid item lg={12} md={12} sm={12} xs={12}>
+                <GridTable
+                  columns={this.state.cols}
+                  rows={dummyData}
+                  isPaginated={true}
+                  isVirtualScroll={true}
+                  showSearch={true}
+                  showRowsInformation={false}
+                  isHeaderSticky={true}
+                />
               </Grid>
             </Grid>
           </div>

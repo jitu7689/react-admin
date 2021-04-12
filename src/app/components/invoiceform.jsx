@@ -104,7 +104,7 @@ class InvoiceForm extends Component {
         this.setState({ lineItem });
     }
     handleChangeAmountArray = (index, event) => {
-        const {formattedValue, value} = event;
+        const {value} = event;
         let lineItem = [...this.state.lineItem];
         lineItem[index].amount = value;
         lineItem[index].total = Number(lineItem[index].qty * lineItem[index].amount);

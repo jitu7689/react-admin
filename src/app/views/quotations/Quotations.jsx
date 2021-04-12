@@ -7,6 +7,9 @@ import { withStyles } from "@material-ui/styles";
 import { Breadcrumb } from "../../../matx";
 import GridTable from '@nadavshaar/react-grid-table';
 import Layout from "../../Layout/Layout1/Layout1";
+import Tooltip from '@material-ui/core/Tooltip';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 let dummyData = [{
   "name": "Quotation name",
   "terms": "terms",
@@ -28,10 +31,11 @@ class Quotations extends Component {
       { id: 3, field: 'notes', label: 'Notes', visible: true, sortable: true },
       { id: 4, field: 'discount_percentage', label: 'Discount Percentage', visible: true, sortable: true },
       { id: 5, field: 'price', label: 'Price', visible: true, sortable: true },
-      { id: 5, field: 'quantity', label: 'Quantity', visible: true, sortable: true },
-      { id: 5, field: 'unit', label: 'Unit', visible: true, sortable: true },
-      { id: 5, field: 'currency', label: 'Currency', visible: true, sortable: true },
-      { id: 5, field: 'draft', label: 'Draft', visible: true, sortable: true }
+      { id: 6, field: 'quantity', label: 'Quantity', visible: true, sortable: true },
+      { id: 7, field: 'unit', label: 'Unit', visible: true, sortable: true },
+      { id: 8, field: 'currency', label: 'Currency', visible: true, sortable: true },
+      { id: 9, field: 'draft', label: 'Draft', visible: true, sortable: true },
+      { id: 10, field: 'action', label: 'Action', visible: true, sortable: false, cellRenderer: this.actionBtn }
       
     ];
     this.state = {
@@ -39,6 +43,16 @@ class Quotations extends Component {
     };
   }
   
+	actionBtn = ({ tableManager, value, field, data, column, colIndex, rowIndex }) => {
+		return (<div className="rgt-cell-inner">
+				<Tooltip title="Edit">
+					<Button style={{ width: 'auto', margin: 3 }} variant="outlined" size="medium" color="primary"><EditIcon /></Button>
+				</Tooltip>
+				<Tooltip title="Delete">
+					<Button style={{ width: 'auto', margin: 3 }} variant="outlined" size="medium" color="secondary" ><DeleteIcon /></Button>
+				</Tooltip>
+		</div>);
+	}
   render() {
 
     return (
