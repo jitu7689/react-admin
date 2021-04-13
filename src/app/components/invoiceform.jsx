@@ -101,7 +101,9 @@ class InvoiceForm extends Component {
         let lineItem = [...this.state.lineItem];
         var key = event.target.name;
         lineItem[index][key] = event.target.value;
-        this.setState({ lineItem });
+        this.setState({ lineItem },()=>{
+            console.log('sdfsf', this.state.lineItem)
+        });
     }
     handleChangeAmountArray = (index, event) => {
         const {value} = event;
@@ -159,12 +161,12 @@ class InvoiceForm extends Component {
                                     <Table style={{ whiteSpace: "pre" }}>
                                         <TableHead>
                                             <TableRow>
-                                                <TableCell>Item</TableCell>
+                                                <TableCell  style={{width: '50%'}}>Item</TableCell>
                                                 <TableCell>Quantity</TableCell>
                                                 <TableCell>Currency</TableCell>
                                                 <TableCell>Rate</TableCell>
                                                 <TableCell>Amount</TableCell>
-                                                <TableCell>Total</TableCell>
+                                                {/* <TableCell>Total</TableCell> */}
                                                 <TableCell></TableCell>
                                             </TableRow>
                                         </TableHead>
@@ -173,10 +175,13 @@ class InvoiceForm extends Component {
                                                 <TableRow key={index}>
                                                     <TableCell align="left">
                                                         <TextField
+                                                            id="outlined-multiline-static"
+                                                            multiline
+                                                            rows={1}
                                                             placeholder="Item"
                                                             variant="outlined"
                                                             name="item"
-                                                            fullWidth
+                                                            style={{width: '100%'}}
                                                             value={item.name}
                                                             onChange={(e) => this.handleChangeArray(index, e)}
                                                         />
@@ -186,7 +191,7 @@ class InvoiceForm extends Component {
                                                             placeholder="Quantity"
                                                             variant="outlined"
                                                             name="qty"
-                                                            fullWidth
+                                                            style={{padding: '17px 14px', width: '75px'}}
                                                             value={item.qty}
                                                             onChange={(e) => this.handleChangeArray(index, e)}
                                                         />
@@ -195,7 +200,7 @@ class InvoiceForm extends Component {
                                                         {/* {item.currency} */}
                                                         <TextField
                                                             select
-                                                            fullWidth
+                                                            
                                                             placeholder="Select currency"
                                                             name="currency"
                                                             value={item.currency}
@@ -203,7 +208,7 @@ class InvoiceForm extends Component {
                                                             variant="outlined"
                                                         >
                                                             {currencies.map((option) => (
-                                                                <MenuItem key={option.value} value={option.value}>
+                                                                <MenuItem key={option.value} value={option.label}>
                                                                     {option.label}
                                                                 </MenuItem>
                                                             ))}
@@ -213,13 +218,13 @@ class InvoiceForm extends Component {
                                                         <NumberFormat
                                                             className="custom-number-input"
                                                             value={this.state.rate}
-                                                            style={{padding: '17px 14px'}}
+                                                            style={{padding: '17px 14px', width: '50px'}}
                                                             name="rate"
                                                             allowNegative={false}
                                                             onChange={(e) => this.handleChangeArray(index, e)}
                                                         />
                                                     </TableCell>
-                                                    <TableCell>
+                                                    {/* <TableCell>
                                                         <NumberFormat
                                                             className="custom-number-input"
                                                             prefix={'$'}
@@ -229,9 +234,10 @@ class InvoiceForm extends Component {
                                                             style={{padding: '17px 14px'}}
                                                             onValueChange={(e) => this.handleChangeAmountArray(index, e)}
                                                         />
-                                                    </TableCell>
+                                                    </TableCell> */}
                                                     <TableCell>
-                                                        ${item.total}
+                                                        {item.currency}{item.qty * this.state.rate}
+                                                        
                                                     </TableCell>
                                                     <TableCell>
                                                         <IconButton onClick={() => this.removeItem(item)}>
@@ -265,6 +271,7 @@ class InvoiceForm extends Component {
                                                     <NumberFormat
                                                         className="custom-number-input"
                                                         value={this.state.discountpercentage}
+                                                        style={{padding: '12px 14px', width: '50px', marginTop: '-10px'}}
                                                         name="discountpercentage"
                                                         allowNegative={false}
                                                         onChange={event => this.handleChangeDiscount(event)}

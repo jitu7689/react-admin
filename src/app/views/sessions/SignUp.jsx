@@ -88,10 +88,15 @@ class SignUp extends Component {
                     <ArrowBackIosIcon /> Back to Sign in
                         </Button>
                   </div>
-                  <img
-                    src="/assets/images/illustrations/posting_photo.svg"
-                    alt=""
-                  />
+                  
+                  <h3 className="text-center bottom-65 postion-abs">HiRise Technologies</h3>
+                  
+                  <div className="">
+                    <img
+                      src="/assets/images/illustrations/posting_photo.svg"
+                      alt=""
+                    />
+                  </div>
                 </div>
               </Grid>
               <Grid item lg={7} md={7} sm={7} xs={12}>
@@ -292,7 +297,7 @@ class SignUp extends Component {
                             Register now
                           </Button>
                         </div>
-                      </Grid>]
+                      </Grid>
                     </Grid>
                   </ValidatorForm>
                 </div>

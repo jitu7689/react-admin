@@ -10,27 +10,72 @@ import GridTable from '@nadavshaar/react-grid-table';
 import Tooltip from '@material-ui/core/Tooltip';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
-let dummyData = [{
-  "first_name": "first name",
-  "last_name": "last name",
-  "email": "email@gmail.com",
-  "create_quote": 'Yes',
-  "create_invoice": 'Yes',
-  "tenant_name": "Xyz"
+let dummyData = [
+  {
+    'client_name'                 : "John Doe",
+    'addr_one'                    : "4 Kendi St, The Gap, QLD 4061",
+    'addr_two'                    : "387 Riverroy Rd, Kingaroy, QLD 4610",
+    'country'                     : "United States",
+    'state'                       : "Indiana",
+    'city'                        : "Alexandria",
+    'zipcode'                     : "3071",
+    'phone'                       : "+1 (041) 330-9415",
+    'vendor_supplier'             : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    'description'                 : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    'default_discount_percentage' : "10%",
+    'default_terms'               : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
 
-}]
+  },
+  {
+    'client_name'                 : "John Doe",
+    'addr_one'                    : "4 Kendi St, The Gap, QLD 4061",
+    'addr_two'                    : "387 Riverroy Rd, Kingaroy, QLD 4610",
+    'country'                     : "United States",
+    'state'                       : "Indiana",
+    'city'                        : "Alexandria",
+    'zipcode'                     : "3071",
+    'phone'                       : "+1 (041) 330-9415",
+    'vendor_supplier'             : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    'description'                 : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    'default_discount_percentage' : "10%",
+    'default_terms'               : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+
+  },
+  {
+    'client_name'                 : "John Doe",
+    'addr_one'                    : "4 Kendi St, The Gap, QLD 4061",
+    'addr_two'                    : "387 Riverroy Rd, Kingaroy, QLD 4610",
+    'country'                     : "United States",
+    'state'                       : "Indiana",
+    'city'                        : "Alexandria",
+    'zipcode'                     : "3071",
+    'phone'                       : "+1 (041) 330-9415",
+    'vendor_supplier'             : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    'description'                 : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    'default_discount_percentage' : "10%",
+    'default_terms'               : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+
+  }
+]
 class Dashboard1 extends Component {
   constructor(props) {
     super(props);
     var columns = [
-      { id: 1, field: 'first_name', label: 'First Name', visible: true, sortable: true },
-      { id: 2, field: 'last_name', label: 'Last Name', visible: true, sortable: true },
-      { id: 3, field: 'email', label: 'Email', visible: true, sortable: true },
-      { id: 4, field: 'create_quote', label: 'Create Quote', visible: true, sortable: true },
-      { id: 5, field: 'create_invoice', label: 'Create Invoice', visible: true, sortable: true },
-      { id: 5, field: 'tenant_name', label: 'Tenant Name', visible: true, sortable: true },
-      { id: 6, field: 'status', label: 'Status', visible: true, sortable: false, cellRenderer: this.statusTemp },
-      { id: 7, field: 'action', label: 'Action', visible: true, sortable: false, cellRenderer: this.actionBtn }
+      { id: 1, field: 'client_name', label: 'Client Name', visible: true, sortable: true },
+      { id: 2, field: 'addr_one', label: 'Address 1', visible: true, sortable: true },
+      { id: 3, field: 'addr_two', label: 'Address 2', visible: true, sortable: true },
+      { id: 4, field: 'country', label: 'Country', visible: true, sortable: true },
+      { id: 5, field: 'state', label: 'State', visible: true, sortable: true },
+      { id: 6, field: 'city', label: 'City', visible: true, sortable: true },
+      { id: 7, field: 'zipcode', label: 'Zip Code', visible: true, sortable: true },
+      { id: 8, field: 'phone', label: 'Phone number', visible: true, sortable: true },
+      { id: 9, field: 'vendor_supplier', label: 'Vendor Supplier', visible: true, sortable: true },
+      { id: 10, field: 'description', label: 'Description', visible: true, sortable: true },
+      { id: 11, field: 'default_discount_percentage', label: 'Default Discount Percentage', visible: true, sortable: true },
+      { id: 12, field: 'default_terms', label: 'Default Terms', visible: true, sortable: true },
+
+      // { id: 6, field: 'status', label: 'Status', visible: true, sortable: false, cellRenderer: this.statusTemp },
+      { id: 13, field: 'action', label: 'Action', visible: true, sortable: false, cellRenderer: this.actionBtn }
       
     ];
     this.state = {

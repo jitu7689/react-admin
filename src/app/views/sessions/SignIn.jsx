@@ -65,7 +65,10 @@ class SignIn extends Component {
           <Card className="signup-card position-relative y-center">
             <Grid container>
               <Grid item lg={5} md={5} sm={5} xs={12}>
-                <div className="p-32 flex flex-center flex-middle h-100">
+                <div className="p-32">
+                  <h3 className="text-center">HiRise Technologies</h3>
+                </div>
+                <div className="p-32 flex flex-center flex-middle">
                   <img src="/assets/images/illustrations/dreamer.svg" alt="" />
                 </div>
               </Grid>

@@ -46,7 +46,8 @@ class ForgotPassword extends Component {
                       <ArrowBackIosIcon /> Back to Sign in
                         </Button>
                   </div>
-                  <img src="/assets/images/illustrations/dreamer.svg" alt="" />
+                  <h3 className="text-center top-55 postion-abs ">HiRise Technologies</h3>
+                  <img src="/assets/images/illustrations/dreamer.svg" alt="" className="pdingtop-85"/>
                 </div>
               </Grid>
               <Grid item lg={7} md={7} sm={7} xs={12}>

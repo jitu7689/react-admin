@@ -24,6 +24,7 @@ import Invoices from "./views/invoices/Invoices";
 import CreateInvoice from "./views/invoices/CreateInvoice";
 import Reports from "./views/reports/Reports";
 import Administrations from "./views/administrations/Administrations";
+import AddUser from "./views/administrations/AddUser";
  
 class App extends React.PureComponent {
   constructor() {
@@ -136,6 +137,7 @@ class App extends React.PureComponent {
                       <Route path="/create-invoice" component={CreateInvoice} />
                       <Route path="/reports" component={Reports} />
                       <Route path="/administrations" component={Administrations} />
+                      <Route path="/add-user" component={AddUser} />
                       <Route path="/404" component={NotFound} />
                       
                       <Route render={() => (<Redirect to={'/dashboard'} />)} />

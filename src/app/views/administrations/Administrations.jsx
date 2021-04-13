@@ -67,7 +67,7 @@ class Administrations extends Component {
               <Grid item lg={12} md={12} sm={12} xs={12}>
 
                 <div align="right">
-                <Button variant="contained" color="primary" onClick={() => this.props.history.push("/create-client")}><AddIcon /> Add User </Button>
+                <Button variant="contained" color="primary" onClick={() => this.props.history.push("/add-user")}><AddIcon /> Add User </Button>
                 </div>
               </Grid>
               <Grid item lg={12} md={12} sm={12} xs={12}>
