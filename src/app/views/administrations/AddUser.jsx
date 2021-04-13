@@ -11,8 +11,29 @@ import {
 import { Breadcrumb } from "matx";
 import { withStyles } from "@material-ui/styles";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+import MenuItem from '@material-ui/core/MenuItem';
 import AddIcon from '@material-ui/icons/Add';
 import Layout from "../../Layout/Layout1/Layout1";
+
+const companyName = [
+    {
+      value: 'Jannet Richeson',
+      label: 'Jannet Richeson',
+    },
+    {
+      value: 'Valorie Chilcott',
+      label: 'Valorie Chilcott',
+    },
+    {
+      value: 'Ressie Brassell',
+      label: 'Ressie Brassell',
+    },
+    {
+      value: 'Helene Hoaglin',
+      label: 'Helene Hoaglin',
+    },
+  ];
+
 class AddUser extends Component {
     constructor(props) {
         super(props);
@@ -20,11 +41,10 @@ class AddUser extends Component {
         this.state = {
             firstName: "",
             lastName: "",
-            companyName: "",
             email: "",
             password: "",
             lineItem: [{
-                tenant_name:"",
+                tenant_name:"Jannet Richeson",
                 createQuote: false,
                 createInvoice: false,
             }],
@@ -69,8 +89,15 @@ class AddUser extends Component {
         });
     }
 
+    handleChangeArray = (index, event) => {
+        let lineItem = [...this.state.lineItem];
+        var key = event.target.name;
+        lineItem[index][key] = event.target.value;
+        this.setState({ lineItem });
+    }
+
     render() {
-        let { firstName, lastName, companyName, email, password, lineItem, createQuote, createInvoice } = this.state;
+        let { firstName, lastName,  email, password, lineItem, createQuote, createInvoice } = this.state;
 
         return (
             <Layout>
@@ -155,13 +182,19 @@ class AddUser extends Component {
                                                             className="mb-24 w-100"
                                                             variant="outlined"
                                                             label="Company name"
-                                                            onChange={this.handleChange}
+                                                            onChange={(e) => this.handleChangeArray(index, e)}
                                                             select
-                                                            name="companyName"
-                                                            value={companyName}
+                                                            name="tenant_name"
+                                                            value={item.tenant_name}
                                                             validators={["required"]}
                                                             errorMessages={["this field is required"]}
-                                                        />
+                                                        >
+                                                        {companyName.map((option) => (
+                                                            <MenuItem key={option.value} value={option.label}>
+                                                                {option.label}
+                                                            </MenuItem>
+                                                        ))}    
+                                                        </TextValidator>
                                                     </Grid>
                                                     <Grid item xs={3}>
                                                         <FormControlLabel

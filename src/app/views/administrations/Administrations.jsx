@@ -11,12 +11,12 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
 let dummyData = [{
-  "first_name": "first name",
-  "last_name": "last name",
-  "email": "email@gmail.com",
+  "first_name": "John",
+  "last_name": "Doe",
+  "email": "johndoe@gmail.com",
   "create_quote": 'Yes',
   "create_invoice": 'Yes',
-  "tenant_name": "Xyz"
+  "tenant_name": "Jannet Richeson"
 
 }]
 class Administrations extends Component {

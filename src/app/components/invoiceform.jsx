@@ -99,9 +99,7 @@ class InvoiceForm extends Component {
         let lineItem = [...this.state.lineItem];
         var key = event.target.name;
         lineItem[index][key] = event.target.value;
-        this.setState({ lineItem },()=>{
-            console.log('sdfsf', this.state.lineItem)
-        });
+        this.setState({ lineItem });
     }
     handleChangeRateArray = (index, event) => {
         const {value} = event;
