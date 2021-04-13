@@ -27,14 +27,14 @@ let dummyData = [
 
   },
   {
-    'client_name'                 : "John Doe",
-    'addr_one'                    : "4 Kendi St, The Gap, QLD 4061",
-    'addr_two'                    : "387 Riverroy Rd, Kingaroy, QLD 4610",
+    'client_name'                 : "Joe Thyme",
+    'addr_one'                    : "344 Elizabeth Street Rochester, NY 14606",
+    'addr_two'                    : "659 Rock Creek St.Linden, NJ 07036",
     'country'                     : "United States",
-    'state'                       : "Indiana",
-    'city'                        : "Alexandria",
+    'state'                       : "California",
+    'city'                        : "Aguanga",
     'zipcode'                     : "3071",
-    'phone'                       : "+1 (041) 330-9415",
+    'phone'                       : "+1 (784) 220-2147",
     'vendor_supplier'             : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     'description'                 : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     'default_discount_percentage' : "10%",
@@ -42,14 +42,14 @@ let dummyData = [
 
   },
   {
-    'client_name'                 : "John Doe",
-    'addr_one'                    : "4 Kendi St, The Gap, QLD 4061",
-    'addr_two'                    : "387 Riverroy Rd, Kingaroy, QLD 4610",
+    'client_name'                 : "Paul Issy",
+    'addr_one'                    : "532 Princeton Ave.Westmont, IL 60559",
+    'addr_two'                    : "440 Whitemarsh St.Pikesville, MD 21208",
     'country'                     : "United States",
-    'state'                       : "Indiana",
-    'city'                        : "Alexandria",
+    'state'                       : "Maryland",
+    'city'                        : "Andrews AFB",
     'zipcode'                     : "3071",
-    'phone'                       : "+1 (041) 330-9415",
+    'phone'                       : "+1 (941) 354-9645",
     'vendor_supplier'             : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     'description'                 : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     'default_discount_percentage' : "10%",
@@ -114,7 +114,7 @@ class Dashboard1 extends Component {
 
                 <StatCards theme={theme}/>
                 <div align="right">
-                <Button variant="contained" color="primary" onClick={() => this.props.history.push("/create-client")}> Create New Client </Button>
+                <Button variant="contained" color="primary" onClick={() => this.props.history.push("/create-client")}> Add a new client </Button>
                 </div>
               </Grid>
               <Grid item lg={12} md={12} sm={12} xs={12}>

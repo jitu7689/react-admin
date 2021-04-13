@@ -21,19 +21,19 @@ import NumberFormat from 'react-number-format';
 // const TAX_RATE = 0.07;
 const currencies = [
     {
-      value: 'USD',
+      value: '$',
       label: '$',
     },
     {
-      value: 'EUR',
+      value: '€',
       label: '€',
     },
     {
-      value: 'BTC',
+      value: '฿',
       label: '฿',
     },
     {
-      value: 'JPY',
+      value: '¥',
       label: '¥',
     },
   ];
@@ -52,10 +52,9 @@ class InvoiceForm extends Component {
             lineItem: [{
                 item: "",
                 qty: 1,
-                currency: "USD",
+                currency: "$",
                 amount: 0,
-                rate: 0,
-                total: 0
+                rate: 0
             }],
             subTotal: 0,
             discountAmount: 0
@@ -77,8 +76,7 @@ class InvoiceForm extends Component {
             qty: 1,
             currency: "$",
             amount: 0,
-            rate: 0,
-            total: 0
+            rate: 0
         });
         this.setState({
             lineItem: addItemArr
@@ -105,11 +103,15 @@ class InvoiceForm extends Component {
             console.log('sdfsf', this.state.lineItem)
         });
     }
-    handleChangeAmountArray = (index, event) => {
+    handleChangeRateArray = (index, event) => {
         const {value} = event;
+        console.log(value)
         let lineItem = [...this.state.lineItem];
-        lineItem[index].amount = value;
-        lineItem[index].total = Number(lineItem[index].qty * lineItem[index].amount);
+        lineItem[index].rate = Number(value);
+        lineItem[index].amount = Number(lineItem[index].qty) * Number(lineItem[index].rate);
+        console.log(lineItem[index].qty);
+        console.log(lineItem[index].rate);
+        console.log(lineItem[index].amount);
         this.setState({ lineItem });
 
     }
@@ -191,7 +193,7 @@ class InvoiceForm extends Component {
                                                             placeholder="Quantity"
                                                             variant="outlined"
                                                             name="qty"
-                                                            style={{padding: '17px 14px', width: '75px'}}
+                                                            style={{padding: '10px 14px', width: '100px'}}
                                                             value={item.qty}
                                                             onChange={(e) => this.handleChangeArray(index, e)}
                                                         />
@@ -218,10 +220,10 @@ class InvoiceForm extends Component {
                                                         <NumberFormat
                                                             className="custom-number-input"
                                                             value={this.state.rate}
-                                                            style={{padding: '17px 14px', width: '50px'}}
+                                                            style={{padding: '17px 14px', width: '60px'}}
                                                             name="rate"
                                                             allowNegative={false}
-                                                            onChange={(e) => this.handleChangeArray(index, e)}
+                                                            onValueChange={(e) => this.handleChangeRateArray(index, e)}
                                                         />
                                                     </TableCell>
                                                     {/* <TableCell>
@@ -236,7 +238,7 @@ class InvoiceForm extends Component {
                                                         />
                                                     </TableCell> */}
                                                     <TableCell>
-                                                        {item.currency}{item.qty * this.state.rate}
+                                                        {item.currency}{item.amount}
                                                         
                                                     </TableCell>
                                                     <TableCell>

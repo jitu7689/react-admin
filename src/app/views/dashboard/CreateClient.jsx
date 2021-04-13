@@ -99,7 +99,7 @@ class CreateClient extends Component {
                         <Grid container spacing={3}>
                             <Grid item lg={12} md={12} sm={12} xs={12}>
                                 <div className="p-36 h-100">
-                                    <h3 className="text-center pb-20">Create New Client</h3>
+                                    <h3 className="text-center pb-20">Create new client</h3>
                                     <ValidatorForm ref="form" onSubmit={this.handleFormSubmit}>
                                         <Grid container spacing={3}>
                                             <Grid item xs={6}>
