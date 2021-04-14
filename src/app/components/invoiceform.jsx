@@ -109,6 +109,13 @@ class InvoiceForm extends Component {
         lineItem[index][key] = event.target.value;
         this.setState({ lineItem });
     }
+    handleChangeCurrency = (event) => {
+        let lineItem = this.state.lineItem;
+        for(let item of lineItem){
+            item.currency = event.target.value;
+        }
+        this.setState({ lineItem });
+    }
     handleChangeRateArray = (index, event) => {
         const {value} = event;
         let lineItem = [...this.state.lineItem];
@@ -153,41 +160,34 @@ class InvoiceForm extends Component {
                                 <Card>
                                     <CardContent>
                                         <Grid justify="space-between" container spacing={3} className="pt-20">
-                                            <Grid item xs={5}>
-                                                <FormControl variant="outlined" fullWidth>
-                                                    <InputLabel id="client-select-outlined-label">Client</InputLabel>
-                                                    <Select
-                                                        labelId="client"
-                                                        id="client-select"
-                                                        value={this.state.client}
-                                                        name="client"
-                                                        onChange={(e) => this.handleChange(e)}
-                                                        label="Client"
-                                                    
-                                                    >
-                                                        <MenuItem value="John Doe">John Doe</MenuItem>
-                                                        <MenuItem value="Maria Hill">Maria Hill</MenuItem>
-                                                        <MenuItem value="Nick Fury">Nick Fury</MenuItem>
-                                                        <MenuItem value="Sam Wilsone">Sam Wilsone</MenuItem>
-                                                    </Select>
-                                                </FormControl>
+                                            <Grid item xs={6}>
+                                            <FormControl variant="outlined" fullWidth>
+                                                <InputLabel id="client-select-outlined-label">Client</InputLabel>
+                                                <Select
+                                                    labelId="client"
+                                                    id="client-select"
+                                                    value={this.state.client}
+                                                    name="client"
+                                                    onChange={(e) => this.handleChange(e)}
+                                                    label="Client"
+                                                
+                                                >
+                                                    <MenuItem value="John Doe">John Doe</MenuItem>
+                                                    <MenuItem value="Maria Hill">Maria Hill</MenuItem>
+                                                    <MenuItem value="Nick Fury">Nick Fury</MenuItem>
+                                                    <MenuItem value="Sam Wilsone">Sam Wilsone</MenuItem>
+                                                </Select>
+                                            </FormControl>
                                             </Grid>
-                                            <Grid item xs={5} >
-                                                <FormControl variant="outlined" fullWidth>
-                                                    <InputLabel id="name-select-outlined-label">Quotation</InputLabel>
-                                                    <Select
-                                                        labelId="name"
-                                                        id="name-select"
-                                                        value={this.state.name}
-                                                        name="name"
-                                                        onChange={(e) => this.handleChange(e)}
-                                                        label="Quotation"
-                                                    
-                                                    >
-                                                        <MenuItem value="Food">Food</MenuItem>
-                                                        <MenuItem value="Machine">Machine</MenuItem>
-                                                    </Select>
-                                                </FormControl>
+                                            <Grid item xs={6} >
+                                                <TextField
+                                                    label="Name"
+                                                    variant="outlined"
+                                                    name="name"
+                                                    fullWidth
+                                                    value={this.state.name}
+                                                    onChange={(e) => this.handleChange(e)}
+                                                />
                                             </Grid>
                                         </Grid>
                                     </CardContent>
@@ -214,7 +214,7 @@ class InvoiceForm extends Component {
                                                                 <TextField
                                                                     id="outlined-multiline-static"
                                                                     multiline
-                                                                    rows={1}
+                                                                    rowsMax={4}
                                                                     placeholder="Item"
                                                                     variant="outlined"
                                                                     name="item"
@@ -242,7 +242,7 @@ class InvoiceForm extends Component {
                                                                     name="currency"
                                                                     value={item.currency}
                                                                     fullWidth
-                                                                    onChange={(e) => this.handleChangeArray(index, e)}
+                                                                    onChange={(e) => this.handleChangeCurrency(e)}
                                                                     variant="outlined"
                                                                 >
                                                                     {currencies.map((option) => (
@@ -280,30 +280,28 @@ class InvoiceForm extends Component {
                                                             </TableCell>
                                                             <TableCell>
                                                                 {
-                                                                index !== (lineItem.length -1) &&
+                                                                lineItem.length > 1 &&
                                                                 <Fab size="small" color="secondary" aria-label="add" onClick={() => this.removeItem(item)}>
                                                                     <Icon >close</Icon>
-                                                                </Fab>   
-                                                                }
-                                                                {
-                                                                index === (lineItem.length -1) &&
-                                                                <Fab size="small" color="primary" aria-label="add" onClick={() => this.addMoreItem(item)}>
-                                                                    <Icon >add</Icon>
                                                                 </Fab>   
                                                                 }
                                                             </TableCell>
                                                         </TableRow>
                                                     ))}
+                                                    
+                                                        <TableRow>
+                                                            <TableCell colSpan={6}>
+                                                                <Button variant="contained" color="primary" onClick={() => this.addMoreItem()}><Icon >add</Icon> Add more item</Button>
+                                                            </TableCell>
+                                                        </TableRow>
                                                 </TableBody>
+                                                
                                             </Table>                                    
                                         </CardContent>
                                     </Card>
 
                                     <Grid container spacing={3} className="mt-20">
                                         <Grid item xs={8}>
-                                            {/* <div className="mt-20">
-                                                <Button variant="contained" color="primary" onClick={() => this.addMoreItem()}><AddIcon /> Add more item</Button>
-                                            </div> */}
                                             <Card>
                                                 <CardContent>
                                                     <Grid container spacing={3} className="mt-20">
@@ -363,10 +361,10 @@ class InvoiceForm extends Component {
                                                         </Grid>
                                                     </Grid>
                                                     <Grid container spacing={3} className="mt-20">
-                                                        <Grid item xs={7}>
+                                                        <Grid item xs={3}>
                                                             <b>Discount(%)</b>
                                                         </Grid>
-                                                        <Grid item xs={5} align="left">
+                                                        <Grid item xs={6} align="left">
                                                             <NumberFormat
                                                                 className="custom-number-input"
                                                                 value={this.state.discountpercentage}
@@ -375,11 +373,6 @@ class InvoiceForm extends Component {
                                                                 allowNegative={false}
                                                                 onChange={event => this.handleChangeDiscount(event)}
                                                             />
-                                                        </Grid>
-                                                    </Grid>
-                                                    <Grid container spacing={3} className="mt-20">
-                                                        <Grid item xs={9}>
-                                                            <b>Discount({lineItem[0].currency})</b>
                                                         </Grid>
                                                         <Grid item xs={3} align="left">
                                                             {lineItem[0].currency}{discountAmount}

@@ -221,21 +221,24 @@ class AddUser extends Component {
                                                             </Grid>
                                                             <Grid item xs={2}>
                                                                 {
-                                                                    index !== (lineItem.length -1) &&
+                                                                    lineItem.length > 1 &&
                                                                     <Fab size="small" color="secondary" aria-label="add" onClick={() => this.removeItem(item)}>
                                                                         <Icon >close</Icon>
-                                                                    </Fab>   
-                                                                }
-                                                                {
-                                                                    index === (lineItem.length -1) &&
-                                                                    <Fab size="small" color="primary" aria-label="add" onClick={() => this.addMoreItem(item)}>
-                                                                        <Icon >add</Icon>
                                                                     </Fab>   
                                                                 }
                                                             </Grid>
                                                         </Grid>
                                                     ))
                                                     }
+                                                    <Grid
+                                                        container
+                                                        direction="row"
+                                                        justify="flex-end"
+                                                    >
+                                                        <Grid item justify="flex-end" xs={3}>
+                                                            <Button variant="contained" color="primary" onClick={() => this.addMoreItem()}><Icon >add</Icon> Add more company</Button>
+                                                        </Grid>
+                                                    </Grid>
                                                     <Grid item xs={12}>
                                                         <div className="flex flex-middle">
                                                             <Button

@@ -31,3 +31,23 @@ code {
 .MuiTableCell-root, .MuiTableCell-head {
   padding: 8px !important;
 }
+.sidenav-full {
+  .toggleMenu{
+    position: absolute !important;
+    z-index: 100;
+    top: 10px;
+    left: 270px;
+  }
+  .toggleMenuSub{
+    display:none
+  }
+}
+
+.sidenav-compact { 
+  .toggleMenu{
+    display: none;
+  }
+  .toggleMenuSub{
+    display:inline-flex
+  }
+}

@@ -6,7 +6,8 @@ import {
   MenuItem,
   Tooltip,
   IconButton,
-  MuiThemeProvider
+  MuiThemeProvider,
+  Fab
 } from "@material-ui/core";
 
 import { connect } from "react-redux";
@@ -86,10 +87,10 @@ class Layout1Sidenav extends Component {
 
   renderLogoSwitch = () => (
     // Open Brand component file to replace logo and text
-    <Brand>
-      <IconButton aria-label="menu-toggle" onClick={this.handleSidenavToggle}>
-        <Icon>menu</Icon>
-      </IconButton>
+    <Brand> 
+        <Fab className="toggleMenuSub" size="small" color="primary" aria-label="add" onClick={() => this.handleSidenavToggle()}>
+          <Icon >menu</Icon>
+        </Fab> 
     </Brand>
   );
 
@@ -158,8 +159,12 @@ class Layout1Sidenav extends Component {
     return (
       <MuiThemeProvider theme={sidenavTheme}>
         <SidenavTheme theme={sidenavTheme} settings={settings} />
-
+        <Fab className="toggleMenu" size="small" color="primary" aria-label="add" onClick={() => this.handleSidenavToggle()}>
+          <Icon >menu</Icon>
+        </Fab> 
         <div className="sidenav">
+          
+           
           <div className="sidenav__hold">
             {(
               <Fragment>
