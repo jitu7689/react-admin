@@ -46,7 +46,7 @@ const currencies = [
 
   
 
-class InvoiceForm extends Component {
+class QuotationForm extends Component {
     constructor(props) {
         super(props);
 
@@ -154,40 +154,33 @@ class InvoiceForm extends Component {
                                     <CardContent>
                                         <Grid justify="space-between" container spacing={3} className="pt-20">
                                             <Grid item xs={5}>
-                                                <FormControl variant="outlined" fullWidth>
-                                                    <InputLabel id="client-select-outlined-label">Client</InputLabel>
-                                                    <Select
-                                                        labelId="client"
-                                                        id="client-select"
-                                                        value={this.state.client}
-                                                        name="client"
-                                                        onChange={(e) => this.handleChange(e)}
-                                                        label="Client"
-                                                    
-                                                    >
-                                                        <MenuItem value="John Doe">John Doe</MenuItem>
-                                                        <MenuItem value="Maria Hill">Maria Hill</MenuItem>
-                                                        <MenuItem value="Nick Fury">Nick Fury</MenuItem>
-                                                        <MenuItem value="Sam Wilsone">Sam Wilsone</MenuItem>
-                                                    </Select>
-                                                </FormControl>
+                                            <FormControl variant="outlined" fullWidth>
+                                                <InputLabel id="client-select-outlined-label">Client</InputLabel>
+                                                <Select
+                                                    labelId="client"
+                                                    id="client-select"
+                                                    value={this.state.client}
+                                                    name="client"
+                                                    onChange={(e) => this.handleChange(e)}
+                                                    label="Client"
+                                                
+                                                >
+                                                    <MenuItem value="John Doe">John Doe</MenuItem>
+                                                    <MenuItem value="Maria Hill">Maria Hill</MenuItem>
+                                                    <MenuItem value="Nick Fury">Nick Fury</MenuItem>
+                                                    <MenuItem value="Sam Wilsone">Sam Wilsone</MenuItem>
+                                                </Select>
+                                            </FormControl>
                                             </Grid>
                                             <Grid item xs={5} >
-                                                <FormControl variant="outlined" fullWidth>
-                                                    <InputLabel id="name-select-outlined-label">Quotation</InputLabel>
-                                                    <Select
-                                                        labelId="name"
-                                                        id="name-select"
-                                                        value={this.state.name}
-                                                        name="name"
-                                                        onChange={(e) => this.handleChange(e)}
-                                                        label="Quotation"
-                                                    
-                                                    >
-                                                        <MenuItem value="Food">Food</MenuItem>
-                                                        <MenuItem value="Machine">Machine</MenuItem>
-                                                    </Select>
-                                                </FormControl>
+                                                <TextField
+                                                    label="Name"
+                                                    variant="outlined"
+                                                    name="name"
+                                                    fullWidth
+                                                    value={this.state.name}
+                                                    onChange={(e) => this.handleChange(e)}
+                                                />
                                             </Grid>
                                         </Grid>
                                     </CardContent>
@@ -410,7 +403,7 @@ class InvoiceForm extends Component {
         );
     }
 }
-InvoiceForm.propTypes = {
+QuotationForm.propTypes = {
     handleFormSubmit: PropTypes.func
 };
 const mapStateToProps = state => ({
@@ -420,6 +413,6 @@ export default withStyles({}, { withTheme: true })(
 withRouter(
     connect(
     mapStateToProps
-    )(InvoiceForm)
+    )(QuotationForm)
 )
 );

@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import {
-  Switch,
   Icon,
   withStyles,
   MenuItem,
@@ -23,7 +22,11 @@ import Brand from "../SharedCompoents/Brand";
 import SidenavTheme from "../MatxTheme/SidenavTheme";
 import { isMdScreen, logout } from "utils";
 
-const styles = theme => ({});
+const styles = theme => ({
+  menuButton:{
+    postion:'absolute'
+  }
+});
 
 const IconButtonWhite = withStyles(theme => ({
   root: {
@@ -84,12 +87,9 @@ class Layout1Sidenav extends Component {
   renderLogoSwitch = () => (
     // Open Brand component file to replace logo and text
     <Brand>
-      <Switch
-        className="sidenav__toggle show-on-lg"
-        onChange={this.handleSidenavToggle}
-        checked={!this.state.sidenavToggleChecked}
-        color="secondary"
-      />
+      <IconButton aria-label="menu-toggle" onClick={this.handleSidenavToggle}>
+        <Icon>menu</Icon>
+      </IconButton>
     </Brand>
   );
 

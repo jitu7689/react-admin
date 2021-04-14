@@ -6,7 +6,7 @@ import {
 import { Breadcrumb } from "matx";
 import { withStyles } from "@material-ui/styles";
 import Layout from "../../Layout/Layout1/Layout1";
-import InvoiceForm from '../../components/invoiceform';
+import QuotationForm from '../../components/quotationform';
 
 class CreateClient extends Component {
     constructor(props) {
@@ -42,7 +42,7 @@ class CreateClient extends Component {
                             <Grid item lg={12} md={12} sm={12} xs={12}>
                                 <div className="p-36 h-100">
                                     <h3 className="text-center pb-20">Create new quotation</h3>
-                                    <InvoiceForm handleFormSubmit={(data) => { this.handleSubmit(data) }}/>
+                                    <QuotationForm handleFormSubmit={(data) => { this.handleSubmit(data) }}/>
                                 </div>
                             </Grid>
 
