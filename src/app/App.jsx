@@ -25,6 +25,10 @@ import CreateInvoice from "./views/invoices/CreateInvoice";
 import Reports from "./views/reports/Reports";
 import Administrations from "./views/administrations/Administrations";
 import AddUser from "./views/administrations/AddUser";
+import InvoiceView from "./views/invoices/InvoiceView";
+import QuotationView from "./views/quotations/QuotationView";
+import UpdateInvoice from "./views/invoices/UpdateInvoice";
+import UpdateQuotation from "./views/quotations/UpdateQuotation";
  
 class App extends React.PureComponent {
   constructor() {
@@ -132,9 +136,13 @@ class App extends React.PureComponent {
                       <Route exact={true} path="/dashboard" component={DashBoard} />
                       <Route path="/create-client" component={CreateAdminUser} />
                       <Route path="/quotations" component={Quotations} />
+                      <Route path="/quotation-view" component={QuotationView} />
                       <Route path="/create-quotation" component={CreateQuotation} />
+                      <Route path="/update-quotation" component={UpdateQuotation} />
                       <Route path="/invoices" component={Invoices} />
+                      <Route path="/invoice-view" component={InvoiceView} />
                       <Route path="/create-invoice" component={CreateInvoice} />
+                      <Route path="/update-invoice" component={UpdateInvoice} />
                       <Route path="/reports" component={Reports} />
                       <Route path="/administrations" component={Administrations} />
                       <Route path="/add-user" component={AddUser} />

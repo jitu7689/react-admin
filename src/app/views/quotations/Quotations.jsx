@@ -10,6 +10,7 @@ import Layout from "../../Layout/Layout1/Layout1";
 import Tooltip from '@material-ui/core/Tooltip';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 let dummyData = [
   {
     "name": "Invoice For Urban",
@@ -83,8 +84,11 @@ class Quotations extends Component {
   
 	actionBtn = ({ tableManager, value, field, data, column, colIndex, rowIndex }) => {
 		return (<div className="rgt-cell-inner">
+        <Tooltip title="Preview">
+          <Button style={{ width: 'auto', margin: 3 }} onClick={() => this.props.history.push('/quotation-view')} variant="outlined" size="medium" color="primary"><VisibilityIcon /></Button>
+        </Tooltip>
 				<Tooltip title="Edit">
-					<Button style={{ width: 'auto', margin: 3 }} variant="outlined" size="medium" color="primary"><EditIcon /></Button>
+					<Button style={{ width: 'auto', margin: 3 }} onClick={() => this.props.history.push('/update-quotation')} variant="outlined" size="medium" color="primary"><EditIcon /></Button>
 				</Tooltip>
 				<Tooltip title="Delete">
 					<Button style={{ width: 'auto', margin: 3 }} variant="outlined" size="medium" color="secondary" ><DeleteIcon /></Button>

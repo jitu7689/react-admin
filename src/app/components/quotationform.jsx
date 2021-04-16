@@ -361,10 +361,10 @@ class QuotationForm extends Component {
                                                         </Grid>
                                                     </Grid>
                                                     <Grid container spacing={3} className="mt-20">
-                                                        <Grid item xs={3}>
+                                                        <Grid item xs={4}>
                                                             <b>Discount(%)</b>
                                                         </Grid>
-                                                        <Grid item xs={6} align="left">
+                                                        <Grid item xs={5} align="left">
                                                             <NumberFormat
                                                                 className="custom-number-input"
                                                                 value={this.state.discountpercentage}
