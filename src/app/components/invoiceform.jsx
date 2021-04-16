@@ -49,7 +49,6 @@ const currencies = [
 class InvoiceForm extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             name: "",
             client:"",
@@ -67,6 +66,26 @@ class InvoiceForm extends Component {
             subTotal: 0,
             discountAmount: 0
         };
+    }
+    componentDidMount(){
+        if(this.props.itemData){
+            this.setState({
+                name: this.props.itemData.name,
+                client:this.props.itemData.client,
+                terms: this.props.itemData.terms,
+                notes: this.props.itemData.notes,
+                discountPercentage: this.props.itemData.discountPercentage,
+                draft: this.props.itemData.draft,
+                lineItem: this.props.itemData.item,
+                subTotal: this.props.itemData.price,
+                discountAmount: this.props.itemData.discountAmount
+            })
+            subTotalAmount =  this.props.itemData.price;
+            discountAmount = this.props.itemData.discountAmount
+        }else{
+            subTotalAmount =  0;
+            discountAmount = 0
+        }
     }
     handleChange = event => {
         event.persist();
@@ -128,7 +147,7 @@ class InvoiceForm extends Component {
         let subTotal = 0
         for(let item of this.state.lineItem) { 
             console.log(item.amount)
-            subTotal += item.amount; 
+            subTotal += Number(item.amount); 
         }
         subTotalAmount = subTotal;
         return subTotal;
@@ -219,7 +238,7 @@ class InvoiceForm extends Component {
                                                                     variant="outlined"
                                                                     name="item"
                                                                     style={{width: '100%'}}
-                                                                    value={item.name}
+                                                                    value={item.item}
                                                                     onChange={(e) => this.handleChangeArray(index, e)}
                                                                 />
                                                             </TableCell>
@@ -255,7 +274,7 @@ class InvoiceForm extends Component {
                                                             <TableCell>
                                                                 <NumberFormat
                                                                     className="custom-number-input"
-                                                                    value={this.state.rate}
+                                                                    value={item.rate}
                                                                     style={{ width: '60px'}}
                                                                     name="rate"
                                                                     fullWidth

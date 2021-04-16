@@ -13,7 +13,17 @@ class UpdateInvoice extends Component {
         super(props);
 
         this.state = {
+            itemData:null
         };
+    }
+    componentDidMount(){
+        if(this.props.history.location && this.props.history.location.state){
+            if(this.props.history.location.state !== ''){
+                this.setState({itemData:this.props.history.location.state})
+            }else{
+                this.porps.history.push('invoices')
+            }
+        }
     }
     handleSubmit = (data) => {
         console.log(data)
@@ -41,7 +51,11 @@ class UpdateInvoice extends Component {
                                     {/* <Pdf targetRef={ref} filename="code-example.pdf">
                                         {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
                                     </Pdf> */}
-                                    <InvoiceForm handleFormSubmit={(data) => { this.handleSubmit(data) }}/>
+                                    {
+                                        this.state.itemData && 
+                                        <InvoiceForm itemData={this.state.itemData} handleFormSubmit={(data) => { this.handleSubmit(data) }}/>
+                                    }
+                                    
                                     <div ref={ref}>
                                     </div>
                                 </div>

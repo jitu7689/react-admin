@@ -13,7 +13,17 @@ class UpdateInvoice extends Component {
         super(props);
 
         this.state = {
+            itemData:null
         };
+    }
+    componentDidMount(){
+        if(this.props.history.location && this.props.history.location.state){
+            if(this.props.history.location.state !== ''){
+                this.setState({itemData:this.props.history.location.state})
+            }else{
+                this.porps.history.push('quotations')
+            }
+        }
     }
     handleChange = event => {
         event.persist();
@@ -42,7 +52,10 @@ class UpdateInvoice extends Component {
                             <Grid item lg={12} md={12} sm={12} xs={12}>
                                 <div className="p-36 h-100">
                                     <h3 className="text-center pb-20">Update quotation</h3>
-                                    <QuotationForm handleFormSubmit={(data) => { this.handleSubmit(data) }}/>
+                                    {
+                                    this.state.itemData && 
+                                    <QuotationForm itemData={this.state.itemData} handleFormSubmit={(data) => { this.handleSubmit(data) }}/>
+                                    }   
                                 </div>
                             </Grid>
 

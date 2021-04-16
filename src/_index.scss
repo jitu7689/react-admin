@@ -53,3 +53,16 @@ code {
     display:inline-flex
   }
 }
+h6.invoice-detail-right {
+  text-align: right;
+  margin-bottom: 14px;
+}
+h2.card-invoice-title {
+  text-align: center;
+  padding: 20px 0;
+  border-bottom: 1px solid lightgray;
+  text-transform: uppercase;
+  color: #7467ef !important;
+  font-weight: 600;
+  margin-bottom: 20px;
+}

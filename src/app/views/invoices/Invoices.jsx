@@ -13,51 +13,119 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 let dummyData = [
   {
+    "client":"John Doe",
     "name": "Corporation of HP",
     "terms": "Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham",
     "notes": "Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur",
-    "discount_percentage": "8%",
-    "price": "150",
-    "quantity": "8",
-    "unit": "10",
+    "discountPercentage": '0',
+    "discountAmount":'0',
+    "price": '150',
+    "quantity": '3',
+    "unit": '10',
     "currency": "$",
-    "draft": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium"
+    "draft": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium",
+    "item":[
+      {
+        item:'Product 1',
+        qty:'2',
+        currency:"$",
+        rate:'50',
+        amount:'100'
+      },{
+        item:'Product 2',
+        qty:'1',
+        currency:"$",
+        rate:'50',
+        amount:'50'
+      }
+    ]
 
   },
   {
+    "client":"Sam Williams",
     "name": "Upstox",
     "terms": "Printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
     "notes": "Galley of type and scrambled it to make a type specimen book",
-    "discount_percentage": "5%",
-    "price": "100",
-    "quantity": "5",
-    "unit": "5",
+    "discountPercentage": '0',
+    "discountAmount":'0',
+    "price": '100',
+    "quantity": '5',
+    "unit": '5',
     "currency": "$",
-    "draft": "The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English"
+    "draft": "The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English",
+    "item":[
+      {
+        item:'Book 1',
+        qty:'3',
+        currency:"$",
+        rate:'30',
+        amount:'90'
+      },{
+        item:'Book 2',
+        qty:'2',
+        currency:"$",
+        rate:'5',
+        amount:'10'
+      }
+    ]
 
   },
   {
+    "client":"Buck Barns",
     "name": "Invoice For Urban",
     "terms": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
     "notes": "When an unknown printer took a galley of type and scrambled it to make a type specimen book",
-    "discount_percentage": "10%",
-    "price": "200",
-    "quantity": "10",
-    "unit": "5",
+    "discountPercentage": '0',
+    "discountAmount":'0',
+    "price": '200',
+    "quantity": '5',
+    "unit": '5',
     "currency": "$",
-    "draft": "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged"
+    "draft": "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged",
+    "item":[
+      {
+        item:'Print 1',
+        qty:'3',
+        currency:"$",
+        rate:'40',
+        amount:'120'
+      },{
+        item:'Print 2',
+        qty:'2',
+        currency:"$",
+        rate:'40',
+        amount:'80'
+      }
+    ]
 
   },  
   {
+    "client":"Maria hill",
     "name": "Samsung Galexy",
     "terms": "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary",
     "notes": "Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text",
-    "discount_percentage": "12%",
-    "price": "100",
-    "quantity": "5",
-    "unit": "5",
+    "discountPercentage": '0',
+    "discountAmount":'0',
+    "price": '100',
+    "quantity": '5',
+    "unit": '5',
     "currency": "$",
-    "draft": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour"
+    "draft": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour",
+    "item":[
+      {
+        item:'Book 1',
+        quantity:'4',
+        currency:"$",
+        rate:'20',
+        amount:'80'
+      },{
+        item:'Book 2',
+        quantity:'2',
+        currency:"$",
+        rate:'10',
+        amount:'20'
+      }
+    ]
   },  
 ]
 class Invoices extends Component {
@@ -67,8 +135,8 @@ class Invoices extends Component {
       { id: 1, field: 'name', label: 'Name', visible: true, sortable: true },
       { id: 2, field: 'terms', label: 'Terms', visible: true, sortable: true },
       { id: 3, field: 'notes', label: 'Notes', visible: true, sortable: true },
-      { id: 4, field: 'discount_percentage', label: 'Discount Percentage', visible: true, sortable: true },
-      { id: 5, field: 'price', label: 'Price', visible: true, sortable: true },
+      { id: 4, field: 'discountPercentage', label: 'Discount Percentage', visible: true, sortable: true },
+      { id: 5, field: 'price', label: 'price', visible: true, sortable: true },
       { id: 6, field: 'quantity', label: 'Quantity', visible: true, sortable: true },
       { id: 7, field: 'unit', label: 'Unit', visible: true, sortable: true },
       { id: 8, field: 'currency', label: 'Currency', visible: true, sortable: true },
@@ -84,10 +152,21 @@ class Invoices extends Component {
 	actionBtn = ({ tableManager, value, field, data, column, colIndex, rowIndex }) => {
 		return (<div className="rgt-cell-inner">
         <Tooltip title="Preview">
-					<Button style={{ width: 'auto', margin: 3 }} onClick={() => this.props.history.push('/invoice-view')} variant="outlined" size="medium" color="primary"><VisibilityIcon /></Button>
+					<Button style={{ width: 'auto', margin: 3 }}  onClick={() => this.props.history.push({ 
+            pathname: '/invoice-view',
+            state: data
+            })} 
+            variant="outlined" size="medium" color="primary"><VisibilityIcon />
+          </Button>
 				</Tooltip>
 				<Tooltip title="Edit">
-					<Button style={{ width: 'auto', margin: 3 }} onClick={() => this.props.history.push('/update-invoice')} variant="outlined" size="medium" color="primary"><EditIcon /></Button>
+					<Button style={{ width: 'auto', margin: 3 }} 
+            onClick={() => this.props.history.push({ 
+            pathname: '/update-invoice',
+            state: data
+            })} 
+            variant="outlined" size="medium" color="primary"><EditIcon />
+          </Button>
 				</Tooltip>
 				<Tooltip title="Delete">
 					<Button style={{ width: 'auto', margin: 3 }} variant="outlined" size="medium" color="secondary" ><DeleteIcon /></Button>
